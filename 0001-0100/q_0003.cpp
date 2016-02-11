@@ -19,9 +19,14 @@
 
 template<typename TYPE>
 TYPE
-calculate(const TYPE& n)
+calculate(TYPE n)
 {
-	std::vector<TYPE> p = {2};
+	std::vector<TYPE> p;
+
+	if (n % 2 == 0) {
+		p.push_back(2);
+		while (n % 2 == 0) n /= 2;
+	}
 
 	for (TYPE i(3); i * i <= n; i += 2) {
 		bool f(false);
@@ -32,17 +37,16 @@ calculate(const TYPE& n)
 		}
 		if (f) continue;
 		p.push_back(i);
+		while (n % i == 0) n /= i;
 	}
 
-	for (auto it = p.rbegin(); it != p.rend(); ++it) {
-		if (n % *it == 0) return *it;
-	}
+	if (1 < n) p.push_back(n);
 
-	return 1;
+	return p.back();
 }
 
-//#define	N	((size_t)600851475143)	// 6857
-#define	N	((size_t)13195)	// 29
+#define	N	((size_t)600851475143)	// 6857
+//#define	N	((size_t)13195)	// 29
 
 int
 main()
