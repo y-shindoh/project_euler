@@ -25,7 +25,7 @@ main()
 	for (size_t a(1); a < 1000; ++a) {
 		for (size_t b(a+1); b < 1000; ++b) {
 			size_t c = 1000 - a - b;
-			if (a * b + 1000 * c != 500000) continue;
+			if (a * a + b * b != c * c) continue;
 			std::printf("%lu\n", a * b * c);
 			return 0;
 		}
