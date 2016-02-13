@@ -28,7 +28,7 @@ main()
 
 	if (2 <= N) v.push_back(2);
 
-	for (size_t i(3); i <= (size_t)N; ++i) {
+	for (size_t i(3); i <= (size_t)N; i += 2) {
 		bool f(true);
 		for (auto j : v) {
 			if (i < j * j) break;
